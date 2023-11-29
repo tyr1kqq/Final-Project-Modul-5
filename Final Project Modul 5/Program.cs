@@ -32,7 +32,7 @@ namespace Final_Project_Modul_5
             
             string HavePet = Console.ReadLine();
 
-            if (HavePet == "yes")
+            if (HavePet == "Yes")
             {
 
                 string NumPet;
@@ -44,7 +44,7 @@ namespace Final_Project_Modul_5
                     Console.WriteLine("Сколько у тебя питомцев - ");
                     NumPet = Console.ReadLine();
                 }
-                while ( CheckNumber(HavePet , out CheckNumPet));
+                while ( CheckNumber(NumPet , out CheckNumPet));
                 Pet = CheckNumPet;
 
                 string[] NamesPet;
