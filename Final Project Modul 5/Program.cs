@@ -4,7 +4,103 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            
+        }
+        static  (string name, string lastname, int age) EnterUser()
+        {
+            (string name, string lastname, int age) User;
+            Console.Write("Enter your name - ");
+            User.name  = Console.ReadLine();
+            Console.Write("Enter your lastname - ");
+            User.lastname = Console.ReadLine();
+            Console.Write("Enter ypur age - ");
+            string age = Console.ReadLine();
+            int CheckAge;
+            do
+            {
+                Console.WriteLine("Enter your age - ");
+                age = Console.ReadLine();
+            }
+            
+            while (CheckNumber(age , out  CheckAge));
+            User.age = CheckAge;
+
+            Console.WriteLine("You have a pet ? \n Yes or No?");
+            
+            string HavePet = Console.ReadLine();
+
+            if (HavePet == "yes")
+            {
+
+                string NumPet;
+                int CheckNumPet;
+                int Pet;
+
+                do
+                {
+                    Console.WriteLine("Сколько у тебя питомцев - ");
+                    NumPet = Console.ReadLine();
+                }
+                while ( CheckNumber(HavePet , out CheckNumPet));
+                Pet = CheckNumPet;
+
+                string[] NamesPet;
+                NamePet(Pet, out NamesPet);
+                foreach (var name in NamesPet)
+                {
+                    Console.WriteLine(name);
+                }
+            }
+            string color;
+            int ColorNum;
+            do
+            {
+                Console.Write("Enter number your favoite color - ");
+                color = Console.ReadLine();
+            }
+            while (CheckNumber(color , out ColorNum));
+            Console.WriteLine("Nuber favorite color - {0}", ColorNum);
+            Console.WriteLine();
+
+
+        }
+        static bool CheckNumber(string Num , out int ChekNum)
+        {
+           
+            if (int.TryParse(Num , out int ChekedNum))
+            {
+                if ( ChekedNum > 0)
+                {
+                    ChekNum = ChekedNum;
+                    return false;
+                }     
+            }
+            {
+                ChekNum = 0;
+                return true;
+            }
+            
+        }
+        static string[] NamePet( int Number , out  string[] NamesPet)
+        {
+            NamesPet = new string[Number];
+            for (int i = 0; i < Number; i++)
+            {
+                Console.WriteLine("Name Pet Number {0} - " , i + 1);
+
+                NamesPet[i] = Console.ReadLine();
+            }
+            return NamesPet;
+        }
+        static int[] FavoriteColor ( int colorNum ,  out string[] FavoriteColore)
+        {
+            FavoriteColore = new string[colorNum];
+            for (int i = 0; i < colorNum ; i++)
+            {
+                Console.WriteLine("Your favorite color numbe {0}" , i+1);
+                FavoriteColore[i] = Console.ReadLine();
+                
+            }
         }
     }
 }
