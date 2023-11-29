@@ -1,10 +1,13 @@
-﻿namespace Final_Project_Modul_5
+﻿using System.Globalization;
+
+namespace Final_Project_Modul_5
 {
     internal class Program
     {
         static void Main(string[] args)
         {
             
+           Console.WriteLine ( EnterUser());
         }
         static  (string name, string lastname, int age) EnterUser()
         {
@@ -13,12 +16,12 @@
             User.name  = Console.ReadLine();
             Console.Write("Enter your lastname - ");
             User.lastname = Console.ReadLine();
-            Console.Write("Enter ypur age - ");
-            string age = Console.ReadLine();
+
+            string age;
             int CheckAge;
             do
             {
-                Console.WriteLine("Enter your age - ");
+                Console.Write("Enter your age - ");
                 age = Console.ReadLine();
             }
             
@@ -62,6 +65,15 @@
             Console.WriteLine("Nuber favorite color - {0}", ColorNum);
             Console.WriteLine();
 
+            string[] FavoriteColore;
+            FavoriteColor(ColorNum, out FavoriteColore);
+            foreach (var item in FavoriteColore)
+            {
+                Console.WriteLine(item);
+            }
+
+
+            return User;
 
         }
         static bool CheckNumber(string Num , out int ChekNum)
@@ -92,15 +104,16 @@
             }
             return NamesPet;
         }
-        static int[] FavoriteColor ( int colorNum ,  out string[] FavoriteColore)
+        static string[] FavoriteColor ( int colorNum ,  out string[] FavoriteColore)
         {
-            FavoriteColore = new string[colorNum];
+             FavoriteColore = new string[colorNum];
             for (int i = 0; i < colorNum ; i++)
             {
                 Console.WriteLine("Your favorite color numbe {0}" , i+1);
                 FavoriteColore[i] = Console.ReadLine();
                 
             }
+            return FavoriteColore;
         }
     }
 }
