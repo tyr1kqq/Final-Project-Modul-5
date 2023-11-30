@@ -6,8 +6,26 @@ namespace Final_Project_Modul_5
     {
         static void Main(string[] args)
         {
+
             
            Console.WriteLine ( EnterUser());
+            Console.WriteLine (ShowUserInfo);
+        }
+        static string ShowUserInfo(in String  HavePet,in string[] NumPet ,in string[] favoriteColor)
+        {
+            (string name, string lastname, int age) User;
+            EnterUser();
+            Console.WriteLine("Pet - " +HavePet);
+            foreach (String name in NumPet)
+            {
+                Console.WriteLine(name);
+            }
+            foreach (string favcolor in favoriteColor)
+            {
+                Console.WriteLine(favcolor);
+            }
+            return HavePet;
+            
         }
         static  (string name, string lastname, int age) EnterUser()
         {
@@ -72,7 +90,7 @@ namespace Final_Project_Modul_5
                 Console.WriteLine(item);
             }
 
-
+            
             return User;
 
         }
