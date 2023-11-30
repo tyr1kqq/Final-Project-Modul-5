@@ -8,28 +8,41 @@ namespace Final_Project_Modul_5
         {
 
             
-           Console.WriteLine ( EnterUser());
-            Console.WriteLine (ShowUserInfo);
+          ShowUserInfo(EnterUser());
+            Console.ReadKey();
         }
-        static string ShowUserInfo(in String  HavePet,in string[] NumPet ,in string[] favoriteColor)
+        static void ShowUserInfo((string , string, int , string[] , string[])user)
         {
-            (string name, string lastname, int age) User;
-            EnterUser();
-            Console.WriteLine("Pet - " +HavePet);
-            foreach (String name in NumPet)
+            Console.WriteLine();
+            Console.WriteLine();
+
+            Console.WriteLine("Your Info:");
+            Console.WriteLine("Your Name is {0}", user.Item1);
+            Console.WriteLine("Your Lastname is {0}", user.Item2);
+            Console.WriteLine("Your Age is {0}",user.Item3);
+
+            Console.WriteLine();
+            Console.WriteLine();
+
+
+            Console.WriteLine("Your pets:");
+            foreach (String name in user.Item4)
             {
-                Console.WriteLine(name);
+                Console.Write(name + " ");
             }
-            foreach (string favcolor in favoriteColor)
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("Your favorite color:");
+            foreach (string favcolor in user.Item5)
             {
-                Console.WriteLine(favcolor);
+                Console.Write(favcolor + " ");
             }
-            return HavePet;
+            
             
         }
-        static  (string name, string lastname, int age) EnterUser()
+        static  (string name, string lastname, int age , string[] PetName , string[] FavColor) EnterUser()
         {
-            (string name, string lastname, int age) User;
+            (string name, string lastname, int age, string[] PetName, string[] FavColor) User = (null, null, 0, new string[0], new string[0]);
             Console.Write("Enter your name - ");
             User.name  = Console.ReadLine();
             Console.Write("Enter your lastname - ");
@@ -59,7 +72,7 @@ namespace Final_Project_Modul_5
 
                 do
                 {
-                    Console.WriteLine("Сколько у тебя питомцев - ");
+                    Console.Write("Сколько у тебя питомцев - ");
                     NumPet = Console.ReadLine();
                 }
                 while ( CheckNumber(NumPet , out CheckNumPet));
@@ -67,10 +80,7 @@ namespace Final_Project_Modul_5
 
                 string[] NamesPet;
                 NamePet(Pet, out NamesPet);
-                foreach (var name in NamesPet)
-                {
-                    Console.WriteLine(name);
-                }
+                User.PetName = NamesPet;
             }
             string color;
             int ColorNum;
@@ -80,15 +90,11 @@ namespace Final_Project_Modul_5
                 color = Console.ReadLine();
             }
             while (CheckNumber(color , out ColorNum));
-            Console.WriteLine("Nuber favorite color - {0}", ColorNum);
-            Console.WriteLine();
+           
 
             string[] FavoriteColore;
             FavoriteColor(ColorNum, out FavoriteColore);
-            foreach (var item in FavoriteColore)
-            {
-                Console.WriteLine(item);
-            }
+            User.FavColor = FavoriteColore;
 
             
             return User;
@@ -116,7 +122,7 @@ namespace Final_Project_Modul_5
             NamesPet = new string[Number];
             for (int i = 0; i < Number; i++)
             {
-                Console.WriteLine("Name Pet Number {0} - " , i + 1);
+                Console.Write("Name Pet Number {0} - " , i + 1);
 
                 NamesPet[i] = Console.ReadLine();
             }
@@ -127,7 +133,7 @@ namespace Final_Project_Modul_5
              FavoriteColore = new string[colorNum];
             for (int i = 0; i < colorNum ; i++)
             {
-                Console.WriteLine("Your favorite color numbe {0}" , i+1);
+                Console.Write("Your favorite color number {0} - " , i+1);
                 FavoriteColore[i] = Console.ReadLine();
                 
             }
